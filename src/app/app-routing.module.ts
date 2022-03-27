@@ -5,39 +5,39 @@ import { PorRegionComponent } from './pais/pages/por-region/por-region.component
 import { PorCapitalComponent } from './pais/pages/por-capital/por-capital.component';
 
 
-const routes :Routes = [
+const routes: Routes = [
     {
-        path : '',
+        path: '',
         component: PorPaisComponent,
         pathMatch: 'full'
     },
     {
-        path : 'region',
-        component: PorRegionComponent        
+        path: 'region',
+        component: PorRegionComponent
     },
     {
-        path : 'capital',
-        component: PorCapitalComponent        
+        path: 'capital',
+        component: PorCapitalComponent
     },
     {
-        path : 'pais/:codigoPais',
-        component: PorPaisComponent       
+        path: 'pais/:id',
+        component: PorPaisComponent
     },
     {
-        path : '**',
-        redirectTo: ''     
+        path: '**',
+        redirectTo: ''
     }
 
 ]
 
 @NgModule({
     imports: [
-        RouterModule.forRoot( routes )
-    ], 
+        RouterModule.forRoot(routes)
+    ],
     exports: [
         RouterModule
     ]
 })
-export class AppRoutingModule{
+export class AppRoutingModule {
 
 }
