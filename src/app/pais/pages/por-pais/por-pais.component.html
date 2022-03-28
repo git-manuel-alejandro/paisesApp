@@ -7,6 +7,13 @@
         </app-pais-input>
     </div>
 </div>
+
+<ul class="list-group">
+    <li class="list-group-item list-group-item-action" *ngFor="let p of paiseSugerido">
+        {{ p.name}}
+    </li>
+
+</ul>
 <hr>
 <div *ngIf="hayError" class="alert alert-danger text-center">
     No hay resultados buscando <strong>"{{termino}}"</strong>

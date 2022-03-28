@@ -10,6 +10,7 @@ export class PaisService {
 
   apiUrl: string = 'https://restcountries.com/v3.1/'
 
+
   constructor(private http: HttpClient) { }
 
   buscarPais(termino: string): Observable<Country[]> {
@@ -25,6 +26,11 @@ export class PaisService {
   getPaisPorAlpha(id: string): Observable<Country> {
     const url = `${this.apiUrl}/alpha?codes=${id}`
     return this.http.get<Country>(url);
+  }
+
+  getRegion(region: string): Observable<Country[]> {
+    const url = `https://restcountries.com/v2/regionalbloc/${region}`
+    return this.http.get<Country[]>(url);
   }
 
 }

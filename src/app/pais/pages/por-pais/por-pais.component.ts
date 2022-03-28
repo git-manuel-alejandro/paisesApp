@@ -9,25 +9,26 @@ import { Country } from '../../interfaces/pais.interface';
 })
 export class PorPaisComponent {
 
-  termino :string = '' 
-  hayError:boolean = false
-  paises:Country[] = []
-  lengthPaises:number = 0
+  termino: string = ''
+  hayError: boolean = false
+  paises: Country[] = []
+  lengthPaises: number = 0
+  paiseSugerido: Country[] = []
 
-  constructor( private paisService: PaisService) { }
+  constructor(private paisService: PaisService) { }
 
-  buscar(termino:string){
+  buscar(termino: string) {
     this.hayError = false
     this.termino = termino
-    this.paisService.buscarPais(termino).subscribe((paises)=>{
+    this.paisService.buscarPais(termino).subscribe((paises) => {
       this.paises = paises
       this.lengthPaises = this.paises.length
 
-      
+
 
       console.log(this.paises)
-      
-    }, (err)=>{
+
+    }, (err) => {
       this.paises = []
       this.hayError = true
       console.log('error')
@@ -37,8 +38,11 @@ export class PorPaisComponent {
   }
 
 
-  sugerencias(termino:string){
+  sugerencias(termino: string) {
     this.hayError = false
+    this.paisService.buscarPais(termino).subscribe(paises => this.paiseSugerido = paises.splice(0, 5),
+      (err) => this.paiseSugerido = []
+    )
 
   }
 
